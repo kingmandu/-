@@ -1,6 +1,7 @@
 import discord
 import time
 import asyncio
+import os
 text = "0"
 repeat = 0
 onOff = [False, False]
@@ -137,4 +138,5 @@ async def on_message(message):
     if message.content == "클리어!":
         await message.channel.purge(limit=1000)
 
-client.run("NzYyMzUyNzU2NjUyMjQ0OTk2.X3n6VQ.0GodTevPgGlX6hrT7MJdl5p41zk")
+access_token = os.environ["BOT_TOKEN"]
+client.run(access_token)
