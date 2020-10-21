@@ -163,6 +163,14 @@ async def on_message(message):
 
         for i in range(sec + 1, 0, -1):
             await message.channel.purge(limit=1)
+            
+    if message.content.startswith("나열!"):
+
+        learn = message.content.split()
+        sec = int(learn[1])
+
+        for i in range(sec, 0, -1):
+            await message.channel.send(embed=discord.Embed(description='순열 : ' + str(i) + ' 번'))
 
 access_token = os.environ["BOT_TOKEN"]
 client.run(access_token)
