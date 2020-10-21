@@ -21,6 +21,12 @@ async def on_message(message):
         embed = discord.Embed(title="안녕? 꼬마!", description="핫도그 먹기 좋은날이야. 그렇지?", color=0x62c1cc)
         embed.set_thumbnail(url="https://i.imgur.com/4SL7iSB.png")
         await message.channel.send(embed=embed)
+      
+     if message.content == "샌즈 방어모드@":
+        await message.channel.send("샌즈봇 방어모듈 해제")
+            
+     if message.content == "샌즈 전투모드@":
+        await message.channel.send("샌즈봇 가스터블레스트 해제")
     # 디도스
     if message.content == "샌즈 사용자 인터페이스 확인":
         await message.channel.send("명령어의 작동이 감지되었습니다.")
