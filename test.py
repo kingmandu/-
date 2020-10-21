@@ -8,9 +8,6 @@ repeat = 0
 onOff = [False, False]
 Te1xt = ""
 
-욕설 = ("젠장", "대머", "닥쳐", "야발", "ㅅㅂ", "시발", "씨발", "새끼", "병신", "썅년", "1발", "@발", " 발", "!발", "1끼", "@끼", "!끼", " 끼",
-      "창년", "애미", "기미", "느금", "발!", "찌발")
-
 client = discord.Client()
 
 
@@ -132,45 +129,6 @@ async def on_message(message):
         else:
             await message.channel.send("Error 00602 : 알 수 없는 관리 명령입니다.")
 
-    for i in range(0, len(message.content) - 1):
-        part = message.content[i:i + 2]
-        if part in 욕설:
-            embed = discord.Embed(title="꼬마.", description="그쯤에서 그만두는게 좋을거야", color=0x62c1cc)
-            embed.set_thumbnail(
-                url="https://lh3.googleusercontent.com/proxy/ANa_BAjgdkF0T2cFRJM4eP9SMu68cH0-QK_OhBISb3fd5FXqZGnUr3sIVJji2Yw8UmlJiAf-9-qPghpC95xl8ut-7mIrqaJhuXxgJex1waiuTwzU_pr64WNx5svdXik0Z_ZSQc1p8RYdMzAsj0HYOgVvnA5d23u2UlVeDRA02pjDbI9ljN_cJGLoxYLK6NhQ_yQ02gS-zWtV9IJBCkVsOsxx_rLRMesIWo7ZiNcdq2KKHfkY_y1r5CT6jKwoALdkugISqbjbZnPLgcf326UAUO4--GJqYKbMIMAiFpTq_C_hr5L_RgCQfKMuD5FBpweQqra3FTRTRhK78XfzC4H8mtPEsc1ha1AnvLpNjRBWlS7PKqI")
-            await message.channel.send(embed=embed)
-            await message.delete()
-            break
-
-    if message.content == "클리어! all":
-        await message.channel.purge(limit=1000)
-        
-    if message.content.startswith("타이머!"):
-
-        learn = message.content.split()
-        sec = int(learn[1])
-
-        for i in range(sec, 0, -1):
-            await message.channel.send(embed=discord.Embed(description='타이머 : ' + str(i) + ' Second'))
-            await asyncio.sleep(1)
-            await message.channel.purge(limit=1)
-        await message.channel.send(embed=discord.Embed(description='타이머 종료'))
-
-    if message.content.startswith("클리어!"):
-
-        learn = message.content.split(" ")
-        sec = int(learn[1])
-
-        for i in range(sec + 1, 0, -1):
-            await message.channel.purge(limit=1)
-            
-    if message.content.startswith("나열!"):
-
-        learn = message.content.split()
-        sec = int(learn[1])
-
-        for i in range(sec, 0, -1):
-            await message.channel.send(embed=discord.Embed(description='순열 : ' + str(i) + ' 번'))
 
 access_token = os.environ["BOT_TOKEN"]
 client.run(access_token)
